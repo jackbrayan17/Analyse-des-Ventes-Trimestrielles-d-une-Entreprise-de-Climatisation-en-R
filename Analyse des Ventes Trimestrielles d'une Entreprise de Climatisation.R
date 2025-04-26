@@ -94,6 +94,11 @@ legend("topleft", legend = c("Observe","Reconstitue"), col= c("blue","red"), lty
 #f - visualisation
 head(valeurs_attendues)
 
+#ETAPE 8 : LISSER AVEC LES MOYENNES MOBILES
+mm <- rollmean(serie_ts, k = 4 , align = "center", fill = NA)
+lines(mm, col = "orange", lwd = 2)
+
+
 #ETAPE 9 : PREVOIR T1 & T2
 temps_futur <- data.frame(temps = 9:10)
 previsions_tendance <- predict(modele_tendance, newdata = temps_futur)
